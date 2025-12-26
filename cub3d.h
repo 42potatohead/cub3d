@@ -9,10 +9,18 @@
 #define WIDTH 512
 #define HEIGHT 512
 
+typedef struct s_mapdata
+{
+    //TODO: decide on map variables, initilize and declare;
+}   t_mapdata;
+
 typedef struct s_mlxdata 
 {
     mlx_t* mlx;
 
 }   t_mlxdata;
+
+// Argument validation
+void	ft_check_av(int ac, char **av, int fd);
 
 #endif
