@@ -1,10 +1,6 @@
-// -----------------------------------------------------------------------------
-// Codam Coding College, Amsterdam @ 2022-2023 by W2Wizard.
-// See README in the root project for more information.
-// -----------------------------------------------------------------------------
-
 #include "cub3d.h"
 
+//mlx key hook example
 void ft_hook(void* param)
 {
 	mlx_t* mlx = param;
