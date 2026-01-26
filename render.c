@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:46:58 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 21:45:43 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 15:50:38 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ t_tex	*select_wall_texture(t_game *g, t_ray *r)
 	if (r->side == 0)
 	{
 		if (r->ray_dir_x > 0)
-			return (&g->west);
+			return (&g->map->west);
 		else
-			return (&g->east);
+			return (&g->map->east);
 	}
 	else
 	{
 		if (r->ray_dir_y > 0)
-			return (&g->north);
+			return (&g->map->north);
 		else
-			return (&g->south);
+			return (&g->map->south);
 	}
 }
 

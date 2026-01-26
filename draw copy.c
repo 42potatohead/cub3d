@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw copy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:37:07 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 19:37:27 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 15:24:44 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_ceiling(t_game *g, t_ray *r, int x)
 	y = 0;
 	while (y < r->draw_start)
 	{
-		mlx_put_pixel(g->img, x, y, g->ceiling_color);
+		mlx_put_pixel(g->img, x, y, g->map->ceiling_color);
 		y++;
 	}
 }
@@ -57,7 +57,7 @@ void	draw_floor(t_game *g, t_ray *r, int x)
 	y = r->draw_end + 1;
 	while (y < HEIGHT)
 	{
-		mlx_put_pixel(g->img, x, y, g->floor_color);
+		mlx_put_pixel(g->img, x, y, g->map->floor_color);
 		y++;
 	}
 }

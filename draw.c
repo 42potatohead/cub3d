@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:37:07 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 21:38:17 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 15:49:06 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_ceiling(t_game *g, t_ray *r, int x)
 	pixels = (uint32_t *)g->img->pixels;
 	while (y < r->draw_start)
 	{
-		pixels[y * WIDTH + x] = g->ceiling_color;
+		pixels[y * WIDTH + x] = g->map->ceiling_color;
 		y++;
 	}
 }
@@ -56,7 +56,7 @@ void	draw_floor(t_game *g, t_ray *r, int x)
 	pixels = (uint32_t *)g->img->pixels;
 	while (y < HEIGHT)
 	{
-		pixels[y * WIDTH + x] = g->floor_color;
+		pixels[y * WIDTH + x] = g->map->floor_color;
 		y++;
 	}
 }

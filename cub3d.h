@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 15:20:33 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 15:49:59 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ static const char	*map[] = {"111111111111111111111111111111111",
 # define TEX_W 64
 # define TEX_H 64
 
+typedef struct s_tex
+{
+	mlx_texture_t	*img;
+	int				width;
+	int				height;
+}					t_tex;
 
 typedef struct s_mapdata
 {
@@ -100,12 +106,7 @@ typedef struct s_ray
 	int				tex_x;
 }					t_ray;
 
-typedef struct s_tex
-{
-	mlx_texture_t	*img;
-	int				width;
-	int				height;
-}					t_tex;
+
 
 typedef struct s_game
 {
