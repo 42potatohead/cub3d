@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:01 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 14:40:01 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:49:30 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,38 @@ void	close_hook(void *param)
 	mlx_close_window(g->mlx);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_game	g;
+	int		fd;
 
+	if (ac != 2)
+	{
+		ft_printf("Usage: %s <map_file.cub>\n", av[0]);
+		return (1);
+	}
+	fd = open(av[1], O_RDONLY);
+	ft_check_av(ac, av, fd);
+	
+	// Parse the map file
+	g.map = map_parser(av[1]);
+	if (!g.map)
+	{
+		ft_printf("Error\nFailed to parse map file\n");
+		return (1);
+	}
 	
 	if (!init_game(&g))
-		return (-1);
+	{
+		free_mapdata(g.map);
+		return (1);
+	}
 	mlx_image_to_window(g.mlx, g.img, 0, 0);
 	render(&g);
 	mlx_key_hook(g.mlx, key_hook, &g);
 	mlx_close_hook(g.mlx, close_hook, &g);
 	mlx_loop(g.mlx);
 	cleanup(&g);
+	free_mapdata(g.map);
 	return (0);
 }

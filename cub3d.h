@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 15:49:59 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 17:49:30 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 # define CUB3D_H
 
 # include "MLX42/MLX42.h"
+# include "libft/libft.h"
 # include <math.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -119,12 +122,6 @@ typedef struct s_game
 	double			plane_x;
 	double			plane_y;
 	t_mapdata		*map;
-	// int				ceiling_color;
-	// int				floor_color;
-	// t_tex			north;
-	// t_tex			south;
-	// t_tex			east;
-	// t_tex			west;
 }					t_game;
 
 /* key_hook.c */
@@ -161,5 +158,12 @@ void				draw(t_game *g, t_ray *r, t_tex *tex, int x);
 
 // input validation
 void	ft_check_av(int ac, char **av, int fd);
+
+/* map parsing functions */
+t_mapdata			*map_parser(char *filename);
+void				free_mapdata(t_mapdata *map);
+int					validate_map(t_mapdata *map);
+int					parse_elements(t_mapdata *map, char *filename);
+int					parse_map_grid(t_mapdata *map, char *filename);
 
 #endif
