@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 18:59:15 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 17:29:44 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:05:45 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	set_player(t_game *g)
 		g->dir_x = -1;
 		g->dir_y = 0;
 	}
-	g->plane_x = -g->dir_y * 0.66;
-	g->plane_y = g->dir_x * 0.66;
+	g->plane_x = g->dir_y * 0.66;
+	g->plane_y = -g->dir_x * 0.66;
 }
 
 int	load_textures(t_game *g)
