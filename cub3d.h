@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 21:43:45 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 14:47:17 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,36 @@ static const char	*map[] = {"111111111111111111111111111111111",
 # define MAP_H 14
 # define TEX_W 64
 # define TEX_H 64
+
+
+typedef struct s_mapdata
+{
+    /*
+        '0' = Empty space (walkable)
+        '1' = Wall
+        'N', 'S', 'E', 'W' = Player starting position and direction
+        ' ' = Void (outside map boundaries)
+    */
+    char    **grid;          // 2D array representing the map layout
+    int     width;           // Map width (number of columns)
+    int     height;          // Map height (number of rows)
+    
+    // Texture paths
+    char    *north_texture;  // Path to north wall texture
+    char    *south_texture;  // Path to south wall texture
+    char    *west_texture;   // Path to west wall texture
+    char    *east_texture;   // Path to east wall texture
+    
+    // Floor and ceiling colors (RGB)
+    int     floor_color;     // Floor color in RGB format
+    int     ceiling_color;   // Ceiling color in RGB format
+    
+    // Player starting position and orientation
+    double  player_x;        // Player starting X coordinate
+    double  player_y;        // Player starting Y coordinate
+    char    player_dir;      // Player starting direction (N, S, E, W)
+    
+}   t_mapdata;
 
 typedef struct s_ray
 {
@@ -122,5 +152,8 @@ void				draw_ceiling(t_game *g, t_ray *r, int x);
 void				draw_wall(t_game *g, t_ray *r, t_tex *tex, int x);
 void				draw_floor(t_game *g, t_ray *r, int x);
 void				draw(t_game *g, t_ray *r, t_tex *tex, int x);
+
+// input validation
+void	ft_check_av(int ac, char **av, int fd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:01 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 21:32:18 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 14:40:01 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(void)
 {
 	t_game	g;
 
+	
 	if (!init_game(&g))
 		return (-1);
 	mlx_image_to_window(g.mlx, g.img, 0, 0);

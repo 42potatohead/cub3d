@@ -1,5 +1,5 @@
 NAME = cub3d
-SRC = main.c key_hook.c render.c init_game.c draw.c dda.c utils.c 
+SRC = main.c key_hook.c render.c init_game.c draw.c dda.c utils.c argument_validation.c
 
 OBJ := $(SRC:%.c=%.o)
 GNL_OBJ := $(GNL_SRC:%.c=%.o)
