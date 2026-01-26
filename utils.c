@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:45 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 19:43:11 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/26 15:51:09 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	cleanup(t_game *g)
 {
-	if (g->north.img)
-		mlx_delete_texture(g->north.img);
-	if (g->south.img)
-		mlx_delete_texture(g->south.img);
-	if (g->east.img)
-		mlx_delete_texture(g->east.img);
-	if (g->west.img)
-		mlx_delete_texture(g->west.img);
+	if (g->map->north.img)
+		mlx_delete_texture(g->map->north.img);
+	if (g->map->south.img)
+		mlx_delete_texture(g->map->south.img);
+	if (g->map->east.img)
+		mlx_delete_texture(g->map->east.img);
+	if (g->map->west.img)
+		mlx_delete_texture(g->map->west.img);
 	if (g->img)
 		mlx_delete_image(g->mlx, g->img);
 	if (g->mlx)

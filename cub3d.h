@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 14:47:17 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:49:59 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,16 @@ static const char	*map[] = {"111111111111111111111111111111111",
 # define TEX_W 64
 # define TEX_H 64
 
+typedef struct s_tex
+{
+	mlx_texture_t	*img;
+	int				width;
+	int				height;
+}					t_tex;
 
 typedef struct s_mapdata
 {
-    /*
+	/*
         '0' = Empty space (walkable)
         '1' = Wall
         'N', 'S', 'E', 'W' = Player starting position and direction
@@ -62,7 +68,10 @@ typedef struct s_mapdata
     char    *south_texture;  // Path to south wall texture
     char    *west_texture;   // Path to west wall texture
     char    *east_texture;   // Path to east wall texture
-    
+    t_tex			north;
+	t_tex			south;
+	t_tex			east;
+	t_tex			west;
     // Floor and ceiling colors (RGB)
     int     floor_color;     // Floor color in RGB format
     int     ceiling_color;   // Ceiling color in RGB format
@@ -97,12 +106,7 @@ typedef struct s_ray
 	int				tex_x;
 }					t_ray;
 
-typedef struct s_tex
-{
-	mlx_texture_t	*img;
-	int				width;
-	int				height;
-}					t_tex;
+
 
 typedef struct s_game
 {
@@ -114,12 +118,13 @@ typedef struct s_game
 	double			dir_y;
 	double			plane_x;
 	double			plane_y;
-	int				ceiling_color;
-	int				floor_color;
-	t_tex			north;
-	t_tex			south;
-	t_tex			east;
-	t_tex			west;
+	t_mapdata		*map;
+	// int				ceiling_color;
+	// int				floor_color;
+	// t_tex			north;
+	// t_tex			south;
+	// t_tex			east;
+	// t_tex			west;
 }					t_game;
 
 /* key_hook.c */
@@ -146,6 +151,7 @@ void				cleanup(t_game *g);
 /* init_game.c */
 int					init_game(t_game *g);
 int					load_textures(t_game *g);
+void				set_player(t_game *g);
 
 /* draw.c */
 void				draw_ceiling(t_game *g, t_ray *r, int x);
