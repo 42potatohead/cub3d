@@ -1,7 +1,7 @@
 NAME = cub3d
 SRC = main.c key_hook.c render.c init_game.c draw.c dda.c utils.c \
 	argument_validation.c map/map_parser.c map/parse_elements.c \
-	map/parse_map_grid.c map/map_validation.c
+	map/parse_map_grid.c map/map_validation.c map/parse_textures.c
 
 OBJ := $(SRC:%.c=%.o)
 LIBFT_DIR = libft

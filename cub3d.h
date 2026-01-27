@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 14:09:06 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 15:13:38 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,11 @@ void				free_mapdata(t_mapdata *map);
 int					validate_map(t_mapdata *map);
 int					parse_elements(t_mapdata *map, char *filename);
 int					parse_map_grid(t_mapdata *map, char *filename);
+int					parse_texture_line(t_mapdata *map, char *line);
+int					parse_east_texture(t_mapdata *map, char *line);
+int					parse_west_texture(t_mapdata *map, char *line);
+int					parse_south_texture(t_mapdata *map, char *line);
+int					parse_north_texture(t_mapdata *map, char *line);
+char				*extract_texture_path(char *line);
 
 #endif

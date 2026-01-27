@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 17:18:00 by zabu-bak         #+#    #+#             */
-/*   Updated: 2026/01/26 17:18:00 by zabu-bak         ###   ########.fr       */
+/*   Created: 2026/01/27 15:04:42 by zabu-bak          #+#    #+#             */
+/*   Updated: 2026/01/27 15:39:45 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static int	validate_characters(t_mapdata *map)
 	while (i < map->height)
 	{
 		if (!map->grid[i])
-		{
-			ft_printf("Error\nNull row found in map at row %d\n", i);
-			return (0);
-		}
+			return (ft_printf("Error\nNull row found in map at row %d\n", i), 0);
 		j = 0;
 		while (j < map->width && map->grid[i][j])
 		{
@@ -124,10 +121,7 @@ static char	**create_visited_grid(t_mapdata *map)
 		}
 		j = 0;
 		while (j < map->width)
-		{
-			visited[i][j] = '0';
-			j++;
-		}
+			visited[i][j++] = '0';
 		visited[i][map->width] = '\0';
 		i++;
 	}
@@ -168,31 +162,19 @@ static int	validate_textures_exist(t_mapdata *map)
 
 	fd = open(map->north_texture, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error\nNorth texture file not found: %s\n", map->north_texture);
-		return (0);
-	}
+		return (ft_printf("Error\nNorth texture file not found: %s\n", map->north_texture), 0);
 	close(fd);
 	fd = open(map->south_texture, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error\nSouth texture file not found: %s\n", map->south_texture);
-		return (0);
-	}
+		return (ft_printf("Error\nSouth texture file not found: %s\n", map->south_texture), 0);
 	close(fd);
 	fd = open(map->west_texture, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error\nWest texture file not found: %s\n", map->west_texture);
-		return (0);
-	}
+		return (ft_printf("Error\nWest texture file not found: %s\n", map->west_texture), 0);
 	close(fd);
 	fd = open(map->east_texture, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error\nEast texture file not found: %s\n", map->east_texture);
-		return (0);
-	}
+		return (ft_printf("Error\nEast texture file not found: %s\n", map->east_texture), 0);
 	close(fd);
 	return (1);
 }

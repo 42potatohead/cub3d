@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_grid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 17:17:00 by zabu-bak         #+#    #+#             */
-/*   Updated: 2026/01/26 17:17:00 by zabu-bak         ###   ########.fr       */
+/*   Created: 2026/01/27 15:05:03 by zabu-bak          #+#    #+#             */
+/*   Updated: 2026/01/27 15:47:02 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static int	count_map_lines(char *filename)
 	{
 		if (!map_started && (line[0] == '1' || line[0] == '0' || line[0] == ' '))
 			map_started = 1;
-		if (map_started && ft_strlen(ft_strtrim(line, " \t\n")) > 0)
+		char *trimmed_line = ft_strtrim(line, " \t\n");
+		if (map_started && ft_strlen(trimmed_line) > 0)
 			count++;
+		free(trimmed_line);
 		free(line);
 	}
 	close(fd);
@@ -74,10 +76,7 @@ static char	*process_map_line(char *line, int target_width)
 	len = ft_strlen(trimmed);
 	processed = malloc(target_width + 1);
 	if (!processed)
-	{
-		free(trimmed);
-		return (NULL);
-	}
+		return (free(trimmed), NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -125,8 +124,7 @@ static int	calculate_max_width(char *filename)
 		}
 		free(line);
 	}
-	close(fd);
-	return (max_width);
+	return (close(fd), max_width);
 }
 
 int	parse_map_grid(t_mapdata *map, char *filename)

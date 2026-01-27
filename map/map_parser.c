@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 17:15:00 by zabu-bak         #+#    #+#             */
-/*   Updated: 2026/01/26 17:15:00 by zabu-bak         ###   ########.fr       */
+/*   Created: 2026/01/27 15:04:20 by zabu-bak          #+#    #+#             */
+/*   Updated: 2026/01/27 15:28:20 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,13 @@ t_mapdata	*map_parser(char *filename)
 	}
 	init_mapdata(map);
 	if (!parse_elements(map, filename))
-	{
-		free_mapdata(map);
-		return (NULL);
-	}
+		return (free_mapdata(map), NULL);
 	if (!parse_map_grid(map, filename))
-	{
-		free_mapdata(map);
-		return (NULL);
-	}
+		return (free_mapdata(map), NULL);
 	if (!check_required_elements(map))
-	{
-		free_mapdata(map);
-		return (NULL);
-	}
+		return (free_mapdata(map), NULL);
 	if (!validate_map(map))
-	{
-		free_mapdata(map);
-		return (NULL);
-	}
+		return (free_mapdata(map), NULL);
 	return (map);
 }
 
