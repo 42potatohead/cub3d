@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:37:07 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 15:49:06 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 13:58:24 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,34 @@ void	draw_wall(t_game *g, t_ray *r, t_tex *tex, int x)
 {
 	int			tex_y;
 	double		tex_pos;
-	uint32_t	color;
 	double		step;
 	int			y;
+	uint32_t	*tex_pixels;
+	uint32_t	*img_pixels;
 
 	step = (double)tex->height / r->line_height;
 	tex_pos = (r->draw_start - HEIGHT / 2 + r->line_height / 2) * step;
+
+	tex_pixels = (uint32_t *)tex->img->pixels;
+	img_pixels = (uint32_t *)g->img->pixels;
+
 	y = r->draw_start;
-	while (y <= r->draw_end)
+	while (y < r->draw_end)
 	{
 		tex_y = (int)tex_pos;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= tex->height)
+			tex_y = tex->height - 1;
+
 		tex_pos += step;
-		color = ((uint32_t *)tex->img->pixels)[tex_y * tex->width + r->tex_x];
-		((uint32_t *)g->img->pixels)[y * WIDTH + x] = color;
+
+		img_pixels[y * WIDTH + x] =
+			tex_pixels[tex_y * tex->width + r->tex_x];
 		y++;
 	}
 }
+
 
 void	draw_floor(t_game *g, t_ray *r, int x)
 {

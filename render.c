@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 16:46:58 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 15:50:38 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 13:48:54 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	render(t_game *g)
 	{
 		init_ray(g, &ray, x);
 		init_dda(g, &ray);
-		run_dda(&ray);
+		run_dda(g, &ray);
 		compute_wall(g, &ray);
 		tex = select_wall_texture(g, &ray);
 		compute_tex_x(&ray, tex);

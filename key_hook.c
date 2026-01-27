@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:52 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/26 17:38:25 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/27 13:47:24 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	move_forward(t_game *g, double move)
 	ybuffer = COLLISION_BUFFER;
 	if (g->dir_y < 0)
 		ybuffer *= -1;
-	if (map[(int)(g->pos_y)][(int)(g->pos_x + g->dir_x * move
+	if (g->map->grid[(int)(g->pos_y)][(int)(g->pos_x + g->dir_x * move
 			+ xbuffer)] == '0')
 		g->pos_x += g->dir_x * move;
-	if (map[(int)(g->pos_y + g->dir_y * move
+	if (g->map->grid[(int)(g->pos_y + g->dir_y * move
 			+ ybuffer)][(int)(g->pos_x)] == '0')
 		g->pos_y += g->dir_y * move;
 }
@@ -42,10 +42,10 @@ void	move_backward(t_game *g, double move)
 	ybuffer = COLLISION_BUFFER;
 	if (g->dir_y > 0)
 		ybuffer *= -1;
-	if (map[(int)(g->pos_y)][(int)(g->pos_x - g->dir_x * move
+	if (g->map->grid[(int)(g->pos_y)][(int)(g->pos_x - g->dir_x * move
 			+ xbuffer)] == '0')
 		g->pos_x -= g->dir_x * move;
-	if (map[(int)(g->pos_y - g->dir_y * move
+	if (g->map->grid[(int)(g->pos_y - g->dir_y * move
 			+ ybuffer)][(int)(g->pos_x)] == '0')
 		g->pos_y -= g->dir_y * move;
 }
@@ -61,10 +61,10 @@ void	move_right(t_game *g, double move)
 	ybuffer = COLLISION_BUFFER;
 	if (g->dir_y < 0)
 		ybuffer *= -1;
-	if (map[(int)(g->pos_y)][(int)(g->pos_x + g->dir_y * move
+	if (g->map->grid[(int)(g->pos_y)][(int)(g->pos_x + g->dir_y * move
 			+ ybuffer)] == '0')
 		g->pos_x += g->dir_y * move;
-	if (map[(int)(g->pos_y - g->dir_x * move
+	if (g->map->grid[(int)(g->pos_y - g->dir_x * move
 			+ xbuffer)][(int)(g->pos_x)] == '0')
 		g->pos_y -= g->dir_x * move;
 }
@@ -80,10 +80,10 @@ void	move_left(t_game *g, double move)
 	ybuffer = COLLISION_BUFFER;
 	if (g->dir_y > 0)
 		ybuffer *= -1;
-	if (map[(int)(g->pos_y)][(int)(g->pos_x - g->dir_y * move
+	if (g->map->grid[(int)(g->pos_y)][(int)(g->pos_x - g->dir_y * move
 			+ ybuffer)] == '0')
 		g->pos_x -= g->dir_y * move;
-	if (map[(int)(g->pos_y + g->dir_x * move
+	if (g->map->grid[(int)(g->pos_y + g->dir_x * move
 			+ xbuffer)][(int)(g->pos_x)] == '0')
 		g->pos_y += g->dir_x * move;
 }

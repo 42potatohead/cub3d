@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:44:40 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/23 19:47:55 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 13:48:11 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_dda(t_game *g, t_ray *ray)
 	stop when wall is hit
 	store which side was hit
 */
-void	run_dda(t_ray *ray)
+void	run_dda(t_game *g, t_ray *ray)
 {
 	while (!ray->hit)
 	{
@@ -83,7 +83,7 @@ void	run_dda(t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map[ray->map_y][ray->map_x] == '1')
+		if (g->map->grid[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }

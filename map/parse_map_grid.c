@@ -51,8 +51,8 @@ static int	find_player_position(t_mapdata *map, char *line, int row)
 				ft_printf("Error\nMultiple player positions found\n");
 				return (0);
 			}
-			map->player_x = col + 0.5;
-			map->player_y = row + 0.5;
+			map->player_x = col + 0.3;
+			map->player_y = row + 0.3;
 			map->player_dir = line[col];
 			line[col] = '0';
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 13:38:42 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:09:06 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 # define HEIGHT 600
 
 # define COLLISION_BUFFER 0.2
-
-# define MAP_W 33
-# define MAP_H 14
 # define TEX_W 64
 # define TEX_H 64
 
@@ -121,7 +118,7 @@ void				look_left_right(mlx_key_data_t key, t_game *g);
 void				render(t_game *g);
 void				init_ray(t_game *g, t_ray *ray, int x);
 void				init_dda(t_game *g, t_ray *ray);
-void				run_dda(t_ray *ray);
+void				run_dda(t_game *g, t_ray *ray);
 t_tex				*select_wall_texture(t_game *g, t_ray *r);
 void				compute_tex_x(t_ray *r, t_tex *tex);
 void				compute_wall(t_game *g, t_ray *r);
