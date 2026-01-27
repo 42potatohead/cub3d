@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:37:07 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 14:16:21 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 14:17:27 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ void	draw_ceiling(t_game *g, t_ray *r, int x)
 
 void	draw_wall(t_game *g, t_ray *r, t_tex *tex, int x)
 {
-	int			tex_y;
-	double		tex_pos;
-	double		step;
-	int			y;
-	uint32_t	*tex_pixels;
+	int		tex_y;
+	double	tex_pos;
+	double	step;
+	int		y;
 
 	step = (double)tex->height / r->line_height;
 	tex_pos = (r->draw_start - HEIGHT / 2 + r->line_height / 2) * step;
-	tex_pixels = (uint32_t *)tex->img->pixels;
 	y = r->draw_start;
 	while (y < r->draw_end)
 	{
@@ -46,8 +44,9 @@ void	draw_wall(t_game *g, t_ray *r, t_tex *tex, int x)
 		if (tex_y >= tex->height)
 			tex_y = tex->height - 1;
 		tex_pos += step;
-		((uint32_t *)g->img->pixels)[y * WIDTH + x] = tex_pixels[tex_y
-			* tex->width + r->tex_x];
+		((uint32_t *)g->img->pixels)[y * WIDTH
+			+ x] = ((uint32_t *)tex->img->pixels)[tex_y * tex->width
+			+ r->tex_x];
 		y++;
 	}
 }

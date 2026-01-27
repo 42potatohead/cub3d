@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:52 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 13:47:24 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/27 14:39:28 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	move_backward(t_game *g, double move)
 		g->pos_y -= g->dir_y * move;
 }
 
-void	move_right(t_game *g, double move)
+void	move_left(t_game *g, double move)
 {
 	double	xbuffer;
 	double	ybuffer;
@@ -69,7 +69,7 @@ void	move_right(t_game *g, double move)
 		g->pos_y -= g->dir_x * move;
 }
 
-void	move_left(t_game *g, double move)
+void	move_right(t_game *g, double move)
 {
 	double	xbuffer;
 	double	ybuffer;
@@ -96,7 +96,7 @@ void	look_left_right(mlx_key_data_t key, t_game *g)
 	double	old_plane_x;
 
 	rot = 0.05;
-	if (key.key == MLX_KEY_RIGHT)
+	if (key.key == MLX_KEY_LEFT)
 		angle = -rot;
 	else
 		angle = rot;
