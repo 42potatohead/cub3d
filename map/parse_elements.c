@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:58 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/27 15:35:02 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/27 18:26:59 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ static int	parse_rgb_color(char *color_str, int *color)
 		return (free_split(rgb_parts), 0);
 	i = -1;
 	while (++i < 3)
+	{
+		ft_printf("%s\n", rgb_parts[i]);
 		rgb[i] = ft_atoi(rgb_parts[i]);
+	}
 	i = 0;
 	while (rgb_parts[i])
 		free(rgb_parts[i++]);
