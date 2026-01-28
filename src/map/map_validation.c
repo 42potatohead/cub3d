@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:42 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/28 20:41:07 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 21:21:23 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_valid_char(char c)
 {
-	return (c == '0' || c == '1' || c == ' ' );
+	return (c == '0' || c == '1' || c == ' ');
 }
 
 static int	validate_characters(t_mapdata *map)

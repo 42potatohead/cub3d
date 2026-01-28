@@ -3,7 +3,7 @@ src = src/main.c src/key_hook.c src/render.c src/init_game.c src/draw.c src/dda.
 	src/argument_validation.c src/map/map_parser.c src/map/parse_elements.c \
 	src/map/parse_map_grid.c src/map/map_validation.c src/map/parse_textures.c \
 	src/map/parse_color.c src/map/utils.c src/map/parse_map_line.c src/map/handle_map_line.c \
-	src/map/check_boundaries.c
+	src/map/check_boundaries.c src/map/check_boundaries_1.c
 
 OBJ := $(src:%.c=%.o)
 LIBFT_DIR = libft

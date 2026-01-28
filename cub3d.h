@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 20:30:30 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 21:41:34 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,22 @@ typedef struct s_tex
 
 typedef struct s_mapdata
 {
-	/*
-		'0' = Empty space (walkable)
-		'1' = Wall
-		'N', 'S', 'E', 'W' = Player starting position and direction
-		' ' = Void (outside map boundaries)
-	*/
-	char **grid; // 2D array representing the map layout
-	int width;   // Map width (number of columns)
-	int height;  // Map height (number of rows)
-
-	// Texture paths
-	char *north_texture; // Path to north wall texture
-	char *south_texture; // Path to south wall texture
-	char *west_texture;  // Path to west wall texture
-	char *east_texture;  // Path to east wall texture
+	char			**grid;
+	int				width;
+	int				height;
+	char			*north_texture;
+	char			*south_texture;
+	char			*west_texture;
+	char			*east_texture;
 	t_tex			north;
 	t_tex			south;
 	t_tex			east;
 	t_tex			west;
-	// Floor and ceiling colors (RGB)
-	uint32_t floor_color;   // Floor color in RGBA format
-	uint32_t ceiling_color; // Ceiling color in RGBA format
-
-	// Player starting position and orientation
-	double player_x; // Player starting X coordinate
-	double player_y; // Player starting Y coordinate
-	char player_dir; // Player starting direction (N, S, E, W)
-
+	uint32_t		floor_color;
+	uint32_t		ceiling_color;
+	double			player_x;
+	double			player_y;
+	char			player_dir;
 }					t_mapdata;
 
 typedef struct s_ray
@@ -166,9 +154,12 @@ int					handle_map_line(t_mapdata *map, char *line, int *row,
 
 char				*process_map_line(char *line, int target_width);
 
-int	check_boundaries(t_mapdata *map);
-int	is_space(char c);
-int	check_middle_row(t_mapdata *map, int r, int c, int last);
+int					check_boundaries(t_mapdata *map);
+int					is_space(char c);
+int					check_middle_row(t_mapdata *map, int r, int c, int last);
 
+size_t				row_len_safe(char *row);
+void				get_row_bounds(char *row, int *first, int *last);
+int					check_border_row(t_mapdata *map, int r, int c, int first);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:02:32 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 18:45:39 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 21:30:38 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*process_map_line(char *line, int target_width)
 			processed[i] = trimmed[i];
 		i++;
 	}
+	while (i < (size_t)target_width)
+		processed[i++] = '\0';
 	processed[target_width] = '\0';
 	free(trimmed);
 	return (processed);
