@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_map_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 12:58:43 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 15:03:45 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:44:52 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	handle_map_line(t_mapdata *map,
 	if (!skip_or_start_map(map_started, line))
 		return (1);
 	if (!is_nonempty_map_line(line))
-		return (1);
+		return (0);
 	if (!process_and_store_row(map, line, *row))
 		return (0);
 	(*row)++;

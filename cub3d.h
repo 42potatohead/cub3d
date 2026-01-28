@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 13:04:06 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 20:30:30 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,10 @@ int					handle_map_line(t_mapdata *map, char *line, int *row,
 						int *map_started);
 
 char				*process_map_line(char *line, int target_width);
+
+int	check_boundaries(t_mapdata *map);
+int	is_space(char c);
+int	check_middle_row(t_mapdata *map, int r, int c, int last);
+
 
 #endif

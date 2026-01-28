@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:02:32 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 16:36:25 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:45:39 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*process_map_line(char *line, int target_width)
 	while (trimmed && i < ft_strlen(trimmed))
 	{
 		if (trimmed[i] == ' ')
-			processed[i] = ' ';
+			processed[i] = '1';
 		else
 			processed[i] = trimmed[i];
 		i++;
