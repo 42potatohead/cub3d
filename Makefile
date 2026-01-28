@@ -1,11 +1,12 @@
 NAME = cub3d
-SRC = main.c key_hook.c render.c init_game.c draw.c dda.c utils.c \
-	argument_validation.c map/map_parser.c map/parse_elements.c \
-	map/parse_map_grid.c map/map_validation.c map/parse_textures.c
+src = src/main.c src/key_hook.c src/render.c src/init_game.c src/draw.c src/dda.c src/utils.c \
+	src/argument_validation.c src/map/map_parser.c src/map/parse_elements.c \
+	src/map/parse_map_grid.c src/map/map_validation.c src/map/parse_textures.c \
+	src/map/parse_color.c src/map/utils.c src/map/parse_map_line.c src/map/handle_map_line.c
 
-OBJ := $(SRC:%.c=%.o)
+OBJ := $(src:%.c=%.o)
 LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT = $(LIBFT_DIR)/libft.af
 
 CC = cc
 CFLAGS = -Wextra -Wall -Werror -I./MLX42/include -g3 -O0

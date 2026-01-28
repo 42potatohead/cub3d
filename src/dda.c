@@ -6,11 +6,11 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:44:40 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 13:48:11 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 12:21:03 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 /* Ray setup per column:
 	compute cameraX

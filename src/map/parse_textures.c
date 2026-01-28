@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:10:24 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/28 11:49:09 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 12:42:02 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../cub3d.h"
 
 int	parse_north_texture(t_mapdata *map, char *line)
 {

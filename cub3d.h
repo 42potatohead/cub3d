@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 12:02:43 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 13:04:06 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "MLX42/MLX42.h"
 # include "libft/libft.h"
+# include <fcntl.h>
 # include <math.h>
 # include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -40,34 +40,34 @@ typedef struct s_tex
 typedef struct s_mapdata
 {
 	/*
-        '0' = Empty space (walkable)
-        '1' = Wall
-        'N', 'S', 'E', 'W' = Player starting position and direction
-        ' ' = Void (outside map boundaries)
-    */
-    char    **grid;          // 2D array representing the map layout
-    int     width;           // Map width (number of columns)
-    int     height;          // Map height (number of rows)
-    
-    // Texture paths
-    char    *north_texture;  // Path to north wall texture
-    char    *south_texture;  // Path to south wall texture
-    char    *west_texture;   // Path to west wall texture
-    char    *east_texture;   // Path to east wall texture
-    t_tex			north;
+		'0' = Empty space (walkable)
+		'1' = Wall
+		'N', 'S', 'E', 'W' = Player starting position and direction
+		' ' = Void (outside map boundaries)
+	*/
+	char **grid; // 2D array representing the map layout
+	int width;   // Map width (number of columns)
+	int height;  // Map height (number of rows)
+
+	// Texture paths
+	char *north_texture; // Path to north wall texture
+	char *south_texture; // Path to south wall texture
+	char *west_texture;  // Path to west wall texture
+	char *east_texture;  // Path to east wall texture
+	t_tex			north;
 	t_tex			south;
 	t_tex			east;
 	t_tex			west;
-    // Floor and ceiling colors (RGB)
-    uint32_t     floor_color;     // Floor color in RGBA format
-    uint32_t     ceiling_color;   // Ceiling color in RGBA format
-    
-    // Player starting position and orientation
-    double  player_x;        // Player starting X coordinate
-    double  player_y;        // Player starting Y coordinate
-    char    player_dir;      // Player starting direction (N, S, E, W)
-    
-}   t_mapdata;
+	// Floor and ceiling colors (RGB)
+	uint32_t floor_color;   // Floor color in RGBA format
+	uint32_t ceiling_color; // Ceiling color in RGBA format
+
+	// Player starting position and orientation
+	double player_x; // Player starting X coordinate
+	double player_y; // Player starting Y coordinate
+	char player_dir; // Player starting direction (N, S, E, W)
+
+}					t_mapdata;
 
 typedef struct s_ray
 {
@@ -91,8 +91,6 @@ typedef struct s_ray
 	double			wall_x;
 	int				tex_x;
 }					t_ray;
-
-
 
 typedef struct s_game
 {
@@ -140,7 +138,7 @@ void				draw_floor(t_game *g, t_ray *r, int x);
 void				draw(t_game *g, t_ray *r, t_tex *tex, int x);
 
 // input validation
-void	ft_check_av(int ac, char **av, int fd);
+void				ft_check_av(int ac, char **av, int fd);
 
 /* map parsing functions */
 t_mapdata			*map_parser(char *filename);
@@ -153,7 +151,19 @@ int					parse_east_texture(t_mapdata *map, char *line);
 int					parse_west_texture(t_mapdata *map, char *line);
 int					parse_south_texture(t_mapdata *map, char *line);
 int					parse_north_texture(t_mapdata *map, char *line);
+
+void				free_split(char **split);
 char				*extract_texture_path(char *line);
 int					read_next_line(int fd, char **line);
+
+int					calculate_max_width(char *filename);
+int					update_max_width(int max_width, char *line);
+int					parse_color_line(t_mapdata *map, char *line);
+int					parse_rgb_color(char *color_str, uint32_t *color);
+
+int					handle_map_line(t_mapdata *map, char *line, int *row,
+						int *map_started);
+
+char				*process_map_line(char *line, int target_width);
 
 #endif

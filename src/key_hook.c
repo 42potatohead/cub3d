@@ -6,11 +6,11 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:52 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 14:39:28 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 12:20:33 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	move_forward(t_game *g, double move)
 {
