@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:20 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/27 15:28:20 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 12:11:14 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	init_mapdata(t_mapdata *map)
 	map->south_texture = NULL;
 	map->west_texture = NULL;
 	map->east_texture = NULL;
-	map->floor_color = -1;
-	map->ceiling_color = -1;
+	map->floor_color = 0;
+	map->ceiling_color = 0;
 	map->player_x = -1;
 	map->player_y = -1;
 	map->player_dir = 0;
@@ -31,13 +31,13 @@ static int	init_mapdata(t_mapdata *map)
 
 static int	check_required_elements(t_mapdata *map)
 {
-	if (!map->north_texture || !map->south_texture ||
-		!map->west_texture || !map->east_texture)
+	if (!map->north_texture || !map->south_texture
+		|| !map->west_texture || !map->east_texture)
 	{
 		ft_printf("Error\nMissing texture path(s)\n");
 		return (0);
 	}
-	if (map->floor_color == -1 || map->ceiling_color == -1)
+	if (map->floor_color == 0 || map->ceiling_color == 0)
 	{
 		ft_printf("Error\nMissing floor or ceiling color\n");
 		return (0);

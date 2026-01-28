@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:10:24 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/27 15:12:54 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 11:49:09 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ int	parse_east_texture(t_mapdata *map, char *line)
 
 int	parse_texture_line(t_mapdata *map, char *line)
 {
-	if (ft_strncmp(line, "NO", 2) == 0 || 
-		(line[0] == ' ' && ft_strnstr(line, "NO", ft_strlen(line))))
+	if (ft_strncmp(line, "NO", 2) == 0
+		|| (line[0] == ' ' && ft_strnstr(line, "NO", ft_strlen(line))))
 		return (parse_north_texture(map, line));
-	else if (ft_strncmp(line, "SO", 2) == 0 ||
-		(line[0] == ' ' && ft_strnstr(line, "SO", ft_strlen(line))))
+	else if (ft_strncmp(line, "SO", 2) == 0
+		|| (line[0] == ' ' && ft_strnstr(line, "SO", ft_strlen(line))))
 		return (parse_south_texture(map, line));
-	else if (ft_strncmp(line, "WE", 2) == 0 ||
-		(line[0] == ' ' && ft_strnstr(line, "WE", ft_strlen(line))))
+	else if (ft_strncmp(line, "WE", 2) == 0
+		|| (line[0] == ' ' && ft_strnstr(line, "WE", ft_strlen(line))))
 		return (parse_west_texture(map, line));
-	else if (ft_strncmp(line, "EA", 2) == 0 ||
-		(line[0] == ' ' && ft_strnstr(line, "EA", ft_strlen(line))))
+	else if (ft_strncmp(line, "EA", 2) == 0
+		|| (line[0] == ' ' && ft_strnstr(line, "EA", ft_strlen(line))))
 		return (parse_east_texture(map, line));
 	return (1);
 }

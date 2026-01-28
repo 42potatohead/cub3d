@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:42 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/27 15:39:45 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 12:10:36 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static int	validate_characters(t_mapdata *map)
 	while (i < map->height)
 	{
 		if (!map->grid[i])
-			return (ft_printf("Error\nNull row found in map at row %d\n", i), 0);
+			return (ft_printf(
+					"Error\nNull row found in map at row %d\n", i), 0);
 		j = 0;
 		while (j < map->width && map->grid[i][j])
 		{
@@ -50,6 +51,12 @@ static int	is_walkable(char c)
 	return (c == '0');
 }
 
+/*
+	// Check if walkable space is adjacent to void (outside map)
+	// Since we convert all spaces to walls, we don't need to check for spaces
+	// Just ensure walkable spaces are properly enclosed by walls
+	investigate later ###
+*/
 static int	check_boundaries(t_mapdata *map)
 {
 	int	i;
@@ -63,11 +70,8 @@ static int	check_boundaries(t_mapdata *map)
 		{
 			if (is_walkable(map->grid[i][j]))
 			{
-				// Check if walkable space is adjacent to void (outside map)
 				if (i > 0 && j > 0 && i < map->height - 1 && j < map->width - 1)
 				{
-					// Since we convert all spaces to walls, we don't need to check for spaces
-					// Just ensure walkable spaces are properly enclosed by walls
 					if (!is_walkable(map->grid[i - 1][j]) && map->grid[i - 1][j] != '1')
 					{
 						ft_printf("Error\nMap not properly enclosed at (%d, %d)\n", i, j);
@@ -91,10 +95,10 @@ static int	flood_fill_check(t_mapdata *map, int x, int y, char **visited)
 	if (map->grid[x][y] == ' ')
 		return (0);
 	visited[x][y] = '1';
-	if (!flood_fill_check(map, x + 1, y, visited) ||
-		!flood_fill_check(map, x - 1, y, visited) ||
-		!flood_fill_check(map, x, y + 1, visited) ||
-		!flood_fill_check(map, x, y - 1, visited))
+	if (!flood_fill_check(map, x + 1, y, visited)
+		|| !flood_fill_check(map, x - 1, y, visited)
+		|| !flood_fill_check(map, x, y + 1, visited)
+		|| !flood_fill_check(map, x, y - 1, visited))
 		return (0);
 	return (1);
 }
@@ -149,9 +153,10 @@ static int	validate_map_enclosure(t_mapdata *map)
 	visited = create_visited_grid(map);
 	if (!visited)
 		return (0);
-	result = flood_fill_check(map, (int)map->player_y, (int)map->player_x, visited);
+	result = flood_fill_check(map, (int)map->player_y,
+			(int)map->player_x, visited);
 	if (!result)
-		ft_printf("Error\nMap is not properly enclosed (player can reach void)\n");
+		ft_printf("Error\nMap is not properly enclosed\n");
 	free_visited_grid(visited, map->height);
 	return (result);
 }
@@ -162,19 +167,19 @@ static int	validate_textures_exist(t_mapdata *map)
 
 	fd = open(map->north_texture, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("Error\nNorth texture file not found: %s\n", map->north_texture), 0);
+		return (ft_printf("Error\nNorth texture file not found\n"), 0);
 	close(fd);
 	fd = open(map->south_texture, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("Error\nSouth texture file not found: %s\n", map->south_texture), 0);
+		return (ft_printf("Error\nSouth texture file not found\n"), 0);
 	close(fd);
 	fd = open(map->west_texture, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("Error\nWest texture file not found: %s\n", map->west_texture), 0);
+		return (ft_printf("Error\nWest texture file not found\n"), 0);
 	close(fd);
 	fd = open(map->east_texture, O_RDONLY);
 	if (fd == -1)
-		return (ft_printf("Error\nEast texture file not found: %s\n", map->east_texture), 0);
+		return (ft_printf("Error\nEast texture file not found\n"), 0);
 	close(fd);
 	return (1);
 }

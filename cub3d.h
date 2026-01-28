@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/27 15:13:38 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 12:02:43 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct s_mapdata
 	t_tex			east;
 	t_tex			west;
     // Floor and ceiling colors (RGB)
-    int     floor_color;     // Floor color in RGB format
-    int     ceiling_color;   // Ceiling color in RGB format
+    uint32_t     floor_color;     // Floor color in RGBA format
+    uint32_t     ceiling_color;   // Ceiling color in RGBA format
     
     // Player starting position and orientation
     double  player_x;        // Player starting X coordinate
@@ -154,5 +154,6 @@ int					parse_west_texture(t_mapdata *map, char *line);
 int					parse_south_texture(t_mapdata *map, char *line);
 int					parse_north_texture(t_mapdata *map, char *line);
 char				*extract_texture_path(char *line);
+int					read_next_line(int fd, char **line);
 
 #endif
