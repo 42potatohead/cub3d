@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 20:01:32 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 21:40:22 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/28 21:44:28 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int	check_border_row(t_mapdata *map, int r, int c, int first)
 		return (ft_printf("Error\nMap border row %d has invalid char\n", r), 0);
 	return (1);
 }
-
