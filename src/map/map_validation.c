@@ -6,7 +6,7 @@
 /*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:42 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/28 15:56:59 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:34:40 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,42 +51,112 @@ static int	validate_characters(t_mapdata *map)
 // 	return (c == '0');
 // }
 
+static int	is_space(char c)
+{
+	return (c == ' ');
+}
+
+static size_t	row_len_safe(char *row)
+{
+	if (!row)
+		return (0);
+	return (ft_strlen(row));
+}
+
+static char	get_cell(t_mapdata *map, int r, int c)
+{
+	size_t	len;
+
+	if (!map || !map->grid || r < 0 || r >= map->height)
+		return (' ');
+	if (!map->grid[r])
+		return (' ');
+	len = row_len_safe(map->grid[r]);
+	if (c < 0 || (size_t)c >= len)
+		return (' ');
+	return (map->grid[r][c]);
+}
+
 static int	validate_map_perimeter(t_mapdata *map)
 {
-	int	i;
-	int	j;
+	int		r;
+	int		c;
+	size_t	len;
+	int		first_idx;
+	int		last_idx;
 
-	// Check top and bottom rows - must be all walls
-	i = 0;
-	while (i < map->width)
+	if (!map || !map->grid || map->height <= 0)
+		return (0);
+	r = 0;
+	while (r < map->height)
 	{
-		if (map->grid[0][i] != '1')
+		if (!map->grid[r])
+			return (ft_printf("Error\nNull row found in map at row %d\n", r), 0);
+		len = row_len_safe(map->grid[r]);
+		c = 0;
+		while ((size_t)c < len)
 		{
-			ft_printf("Error\nMap not enclosed: top edge at column %d is not a wall\n", i);
-			return (0);
+			first_idx = 0;
+			while ((size_t)first_idx < len && is_space(map->grid[r][first_idx]))
+				first_idx++;
+			last_idx = (int)len - 1;
+			while (last_idx >= 0 && is_space(map->grid[r][last_idx]))
+				last_idx--;
+
+			/* If top/bottom row: ignore leading whitespace, then only '1' or ' ' */
+			if (r == 0 || r == map->height - 1)
+			{
+				if ((size_t)c >= (size_t)first_idx
+					&& map->grid[r][c] != '1' && map->grid[r][c] != ' ')
+					return (ft_printf("Error\nMap border row %d has invalid char '%c' at col %d\n",
+							r, map->grid[r][c], c), 0);
+			}
+			else
+			{
+				/* Else: first and last non-space must be '1' (if any non-space exists) */
+				if (last_idx >= first_idx)
+				{
+					if (map->grid[r][first_idx] != '1')
+						return (ft_printf("Error\nRow %d must start with wall '1' after leading spaces\n", r), 0);
+					if (map->grid[r][last_idx] != '1')
+						return (ft_printf("Error\nRow %d must end with wall '1'\n", r), 0);
+				}
+
+				/*
+				** If current row longer than row above/below and we're past their length,
+				** current char must be '1'
+				*/
+				if ((size_t)c >= row_len_safe(map->grid[r - 1])
+					&& row_len_safe(map->grid[r]) > row_len_safe(map->grid[r - 1]))
+				{
+					if (map->grid[r][c] != '1')
+						return (ft_printf("Error\nRow %d col %d overhangs top row and must be '1'\n", r, c), 0);
+				}
+				if ((size_t)c >= row_len_safe(map->grid[r + 1])
+					&& row_len_safe(map->grid[r]) > row_len_safe(map->grid[r + 1]))
+				{
+					if (map->grid[r][c] != '1')
+						return (ft_printf("Error\nRow %d col %d overhangs bottom row and must be '1'\n", r, c), 0);
+				}
+
+				/*
+				** For any non-leading whitespace: acceptable adjacent to ' ' are only '1' or ' '
+				*/
+				if (map->grid[r][c] == ' ' && c >= first_idx)
+				{
+					char	up = get_cell(map, r - 1, c);
+					char	down = get_cell(map, r + 1, c);
+					char	left = get_cell(map, r, c - 1);
+					char	right = get_cell(map, r, c + 1);
+
+					if ((up != '1' && up != ' ') || (down != '1' && down != ' ')
+						|| (left != '1' && left != ' ') || (right != '1' && right != ' '))
+						return (ft_printf("Error\nSpace at (%d,%d) adjacent to invalid cell\n", r, c), 0);
+				}
+			}
+			c++;
 		}
-		if (map->grid[map->height - 1][i] != '1')
-		{
-			ft_printf("Error\nMap not enclosed: bottom edge at column %d is not a wall\n", i);
-			return (0);
-		}
-		i++;
-	}
-	// Check left and right columns - must be all walls
-	j = 0;
-	while (j < map->height)
-	{
-		if (map->grid[j][0] != '1')
-		{
-			ft_printf("Error\nMap not enclosed: left edge at row %d is not a wall\n", j);
-			return (0);
-		}
-		if (map->grid[j][map->width - 1] != '1')
-		{
-			ft_printf("Error\nMap not enclosed: right edge at row %d is not a wall\n", j);
-			return (0);
-		}
-		j++;
+		r++;
 	}
 	return (1);
 }
