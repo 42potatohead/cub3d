@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:45 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 12:21:25 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 16:01:37 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	cleanup(t_game *g)
 		mlx_close_window(g->mlx);
 		mlx_terminate(g->mlx);
 	}
+	free_mapdata(g->map);
 }
 
 void	clear_image(t_game *g)

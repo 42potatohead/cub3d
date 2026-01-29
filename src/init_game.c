@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 18:59:15 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 12:21:14 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 16:04:31 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	load_textures(t_game *g)
 	if (!g->map->north.img || !g->map->south.img || !g->map->east.img
 		|| !g->map->west.img)
 	{
-		printf("Texture load failed");
+		printf("Error\nTexture load failed\n");
 		cleanup(g);
 		return (0);
 	}

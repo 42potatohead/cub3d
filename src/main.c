@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:38:01 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 12:29:11 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 16:06:23 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ int	main(int ac, char **av)
 	int		fd;
 
 	fd = open(av[1], O_RDONLY);
-	ft_check_av(ac, av, fd);
+	if (ft_check_av(ac, av, fd) == EXIT_FAILURE)
+	{
+		if (fd != -1)
+			close (fd);
+		exit(EXIT_FAILURE);
+	}
 	g.map = map_parser(av[1]);
 	if (!g.map)
 	{
@@ -59,16 +64,12 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (!init_game(&g))
-	{
-		free_mapdata(g.map);
 		return (1);
-	}
 	mlx_image_to_window(g.mlx, g.img, 0, 0);
 	render(&g);
 	mlx_key_hook(g.mlx, key_hook, &g);
 	mlx_close_hook(g.mlx, close_hook, &g);
 	mlx_loop(g.mlx);
 	cleanup(&g);
-	free_mapdata(g.map);
 	return (0);
 }

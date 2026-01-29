@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 14:11:49 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/28 21:41:34 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 15:56:05 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void				draw_floor(t_game *g, t_ray *r, int x);
 void				draw(t_game *g, t_ray *r, t_tex *tex, int x);
 
 // input validation
-void				ft_check_av(int ac, char **av, int fd);
+int				ft_check_av(int ac, char **av, int fd);
 
 /* map parsing functions */
 t_mapdata			*map_parser(char *filename);
