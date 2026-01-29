@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:45 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/29 16:01:37 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 19:08:45 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	cleanup(t_game *g)
 
 void	clear_image(t_game *g)
 {
-	memset(g->img->pixels, 0, g->img->width * g->img->height
+	ft_memset(g->img->pixels, 0, g->img->width * g->img->height
 		* sizeof(uint32_t));
 }

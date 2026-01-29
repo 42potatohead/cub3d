@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 19:27:42 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/29 16:24:28 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 16:50:01 by zabu-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,23 @@ static char	*extract_line(char **line_draft, int fd)
 static char	*update_line_draft(char **line_draft, int fd, char *line)
 {
 	char	*tmp;
+	char	*new_draft;
 	int		line_len;
 
 	tmp = line_draft[fd];
 	line_len = 0;
 	if (line != NULL)
 		line_len = gnl_strlen(line);
-	line_draft[fd] = ft_substr(tmp, line_len, (gnl_strlen(line_draft[fd])
-				- line_len));
+	new_draft = ft_substr(tmp, line_len, (gnl_strlen(line_draft[fd]) - line_len));
 	free(tmp);
+	if (!new_draft || gnl_strlen(new_draft) == 0)
+	{
+		if (new_draft)
+			free(new_draft);
+		line_draft[fd] = NULL;
+		return (NULL);
+	}
+	line_draft[fd] = new_draft;
 	return (line_draft[fd]);
 }
 
