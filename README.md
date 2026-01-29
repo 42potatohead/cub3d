@@ -13,6 +13,9 @@ cub3D is a project inspired by the classic Wolfenstein 3D game, widely regarded 
     ```bash
     cd cub3d
     git clone https://github.com/codam-coding-college/MLX42.git
+    cd MLX42
+    cmake -B build 
+    cmake --build build -j4 
     ```
 
 ### Compilation

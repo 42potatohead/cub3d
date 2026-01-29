@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zabu-bak <zabu-bak@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 19:27:42 by ataan             #+#    #+#             */
-/*   Updated: 2026/01/29 16:50:01 by zabu-bak         ###   ########.fr       */
+/*   Updated: 2026/01/29 21:11:51 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static char	*update_line_draft(char **line_draft, int fd, char *line)
 	line_len = 0;
 	if (line != NULL)
 		line_len = gnl_strlen(line);
-	new_draft = ft_substr(tmp, line_len, (gnl_strlen(line_draft[fd]) - line_len));
+	new_draft = ft_substr(tmp, line_len,
+			(gnl_strlen(line_draft[fd]) - line_len));
 	free(tmp);
 	if (!new_draft || gnl_strlen(new_draft) == 0)
 	{

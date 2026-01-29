@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:58 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/28 12:40:10 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/29 20:24:56 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_empty_line(char *line)
 
 	if (!line || line[0] == '\n')
 		return (1);
-	trimmed = ft_strtrim(line, " \t\n");
+	trimmed = ft_strtrim(line, " \n");
 	if (!trimmed)
 		return (0);
 	empty = (ft_strlen(trimmed) == 0);
@@ -58,7 +58,10 @@ int	parse_elements(t_mapdata *map, char *filename)
 		if (!is_empty_line(line) && is_map_start(line[0]))
 			break ;
 		if (!is_empty_line(line))
-			handle_element_line(map, line, &result);
+		{
+			if (!handle_element_line(map, line, &result))
+				return (ft_printf("Error\nInvalid char in file\n"), 0);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
