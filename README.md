@@ -69,6 +69,3 @@ cub3D is a project inspired by the classic Wolfenstein 3D game, widely regarded 
 - Generate the games textures.
 - Helped us pin point bugs when we were stuck.
 - Explaining math to Zaid :((.
-
-# Compile Command
-cc main.c -I./MLX42/include -L./MLX42/build -lmlx42 -lglfw -lX11 -lXext -g
