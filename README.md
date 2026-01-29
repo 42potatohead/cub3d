@@ -58,6 +58,17 @@ cub3D is a project inspired by the classic Wolfenstein 3D game, widely regarded 
 - The map must be surrounded by walls and contain valid characters only (`0`, `1`, `N`, `S`, `E`, `W`).
 
 # Resources
+### Useful Articles we used
+- https://lodev.org/cgtutor/raycasting.html
+- https://lodev.org/cgtutor/raycasting2.html
+- https://lodev.org/cgtutor/raycasting3.html
+- https://lodev.org/cgtutor/raycasting4.html
+
+### How we used AI
+- Generate study plans.
+- Generate the games textures.
+- Helped us pin point bugs when we were stuck.
+- Explaining math to Zaid :((.
 
 # Compile Command
 cc main.c -I./MLX42/include -L./MLX42/build -lmlx42 -lglfw -lX11 -lXext -g

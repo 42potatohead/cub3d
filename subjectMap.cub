@@ -6,7 +6,7 @@ WE ./textures/west.png
 
 EA ./textures/east.png
 
-F 128,128,128
+F 128,128,12811
 
 C 255,192,203
 
