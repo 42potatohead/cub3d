@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:20 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/28 12:24:56 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/30 02:39:15 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	init_mapdata(t_mapdata *map)
 	map->south_texture = NULL;
 	map->west_texture = NULL;
 	map->east_texture = NULL;
-	map->floor_color = 0;
-	map->ceiling_color = 0;
+	map->floor_color = 256;
+	map->ceiling_color = 256;
 	map->player_x = -1;
 	map->player_y = -1;
 	map->player_dir = 0;

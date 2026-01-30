@@ -19,7 +19,7 @@ all: $(LIBFT) $(NAME)
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) 
 	$(CC) $(OBJ) $(LDFLAGS) $(LIBS) -o $(NAME)
 
 %.o: %.c

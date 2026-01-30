@@ -6,7 +6,7 @@
 /*   By: ataan <ataan@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:58 by zabu-bak          #+#    #+#             */
-/*   Updated: 2026/01/29 20:24:56 by ataan            ###   ########.fr       */
+/*   Updated: 2026/01/30 13:44:28 by ataan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	is_map_start(char c)
 
 static int	handle_element_line(t_mapdata *map, char *line, int *result)
 {
-	if (ft_strncmp(line, "NO", 2) == 0 || ft_strncmp(line, "SO", 2) == 0
+	if (ft_strncmp(line, "NO ", 2) == 0 || ft_strncmp(line, "SO", 2) == 0
 		|| ft_strncmp(line, "WE", 2) == 0 || ft_strncmp(line, "EA", 2) == 0)
 		return (*result = parse_texture_line(map, line), 1);
 	if (ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0)
